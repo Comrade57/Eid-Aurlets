@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Aurlets Eid Letters 🌙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(#fde2ff,#e0f7ff);
+font-family: 'Dancing Script', cursive;
+text-align:center;
+padding:40px;
+}
+
+h1{
+font-size:45px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.envelope{
+background:#fff;
+border-radius:20px;
+padding:25px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:0.3s;
+}
+
+.envelope:hover{
+transform:scale(1.08);
+}
+
+.passwordBox{
+display:none;
+margin-top:30px;
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ff9fd6;
+cursor:pointer;
+}
+
+#scratchCanvas{
+display:none;
+margin:auto;
+margin-top:30px;
+border-radius:20px;
+}
+
+#letter{
+display:none;
+max-width:600px;
+margin:auto;
+font-size:26px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🌙 Aurlets Eid Letters ✨</h1>
+<p>Choose your envelope</p>
+
+<div class="container">
+
+<div class="envelope" onclick="selectPerson('queenz')">💌 Queenz</div>
+<div class="envelope" onclick="selectPerson('peanut')">💌 Peanutliver</div>
+<div class="envelope" onclick="selectPerson('masab')">💌 Masab</div>
+<div class="envelope" onclick="selectPerson('ibbi')">💌 Ibbi</div>
+<div class="envelope" onclick="selectPerson('palindrome')">💌 Palindrome</div>
+<div class="envelope" onclick="selectPerson('brooks')">💌 Brooks</div>
+<div class="envelope" onclick="selectPerson('bipolar')">💌 Bipolar Disorder</div>
+<div class="envelope" onclick="selectPerson('maki')">💌 Maki</div>
+<div class="envelope" onclick="selectPerson('shino')">💌 Shino & Mustafa</div>
+<div class="envelope" onclick="selectPerson('malu')">💌 Malu & Lilly</div>
+<div class="envelope" onclick="selectPerson('hajji')">💌 Hajji</div>
+
+</div>
+
+<div class="passwordBox" id="passwordBox">
+
+<p>Enter your Eid code ✨</p>
+
+<input id="passwordInput" placeholder="Enter code">
+<button onclick="checkPassword()">Open Envelope</button>
+
+</div>
+
+<canvas id="scratchCanvas" width="400" height="200"></canvas>
+
+<div id="letter"></div>
+
+<script>
+
+let currentPerson=""
+
+const passwords={
+queenz:"sultana",
+peanut:"bauni",
+masab:"elahi",
+ibbi:"nibbi",
+palindrome:"brother",
+brooks:"urdu teacher",
+bipolar:"chaos",
+maki:"bacchi",
+shino:"duo",
+malu:"twins",
+hajji:"yaara"
+}
+
+const letters={
+
+queenz:`Eid Mubarak Queenz 🌙
+
+The past 10 months in Aurlets wouldn't
+have been the same without you.
+
+From the chaos to the laughter,
+you've been part of the soul of this place.
+
+I'm grateful for every moment
+this server gave us.
+
+— Fardin`,
+
+peanut:`Eid Mubarak Peanutliver 🌙
+
+Some people quietly become
+a part of the memories that define a place.
+
+You are one of them.
+
+The past months wouldn't feel
+the same without you.
+
+— Fardin`
+
+}
+
+function selectPerson(person){
+
+currentPerson=person
+document.getElementById("passwordBox").style.display="block"
+
+}
+
+function checkPassword(){
+
+let input=document.getElementById("passwordInput").value
+
+if(input===passwords[currentPerson]){
+
+startScratch()
+
+}else{
+
+alert("Wrong code 👀")
+
+}
+
+}
+
+function startScratch(){
+
+document.getElementById("scratchCanvas").style.display="block"
+document.getElementById("letter").style.display="block"
+
+document.getElementById("letter").innerText=letters[currentPerson]
+
+let canvas=document.getElementById("scratchCanvas")
+let ctx=canvas.getContext("2d")
+
+ctx.fillStyle="#bbbbbb"
+ctx.fillRect(0,0,400,200)
+
+canvas.addEventListener("mousemove",function(e){
+
+let rect=canvas.getBoundingClientRect()
+
+let x=e.clientX-rect.left
+let y=e.clientY-rect.top
+
+ctx.globalCompositeOperation="destination-out"
+
+ctx.beginPath()
+ctx.arc(x,y,20,0,Math.PI*2)
+ctx.fill()
+
+})
+
+}
+
+</script>
+
+</body>
+</html>
