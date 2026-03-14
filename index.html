@@ -221,7 +221,9 @@ let input=document.getElementById("passwordInput").value
 
 if(input===passwords[currentPerson]){
 
-startScratch()
+let letterBox=document.getElementById("letter")
+letterBox.style.display="block"
+letterBox.innerText=letters[currentPerson]
 
 }else{
 
