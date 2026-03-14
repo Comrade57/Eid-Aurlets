@@ -16,7 +16,7 @@ padding:40px;
 }
 
 h1{
-font-size:45px;
+font-size:24px;
 }
 
 .container{
@@ -58,22 +58,33 @@ background:#ff9fd6;
 cursor:pointer;
 }
 
-#scratchCanvas{
-display:none;
+#scratchContainer{
+position:relative;
+width:600px;
 margin:auto;
-margin-top:30px;
-border-radius:20px;
+margin-top:40px;
 }
 
 #letter{
-display:none;
-max-width:600px;
-margin:auto;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
 font-size:26px;
 background:white;
 padding:40px;
 border-radius:20px;
 box-shadow:0 10px 20px rgba(0,0,0,0.1);
+z-index:1;
+}
+
+#scratchCanvas{
+position:absolute;
+top:0;
+left:0;
+z-index:2;
+border-radius:20px;
 }
 
 </style>
