@@ -742,6 +742,7 @@ function selectPerson(person){
 
 currentPerson=person
 document.getElementById("passwordBox").style.display="block"
+document.getElementById("bgMusic").play()
 
 }
 
@@ -795,5 +796,9 @@ ctx.fill()
 
 </script>
 
+<audio id="bgMusic" loop>
+  <source src="Kabira_Song.mp3" type="audio/mpeg">
+</audio>
+  
 </body>
 </html>
